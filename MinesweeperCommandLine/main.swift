@@ -13,6 +13,8 @@ board.setupBoard(testing: true)
 board.setupMine(row: 0, col: 0)
 board.setupValues()
 board.printBoard(printAll:true)
+var x = board.flagCell(row: 0, col: 0)
+board.printBoard(printAll: false)
 print("\n")
 
 //

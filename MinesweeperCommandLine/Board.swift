@@ -190,10 +190,25 @@ class Board
 
     }
     
-    
-    func flagCell(row:Int, col:Int)
+    /**
+     Returns true if the user has won, false if the user has not
+     */
+    func flagCell(row:Int, col:Int) -> Bool
     {
+        gameBoard[row][col].isFlagged = !gameBoard[row][col].isFlagged
         
+        for x in 0 ..< size
+        {
+            for y in 0 ..< size
+            {
+                if (gameBoard[x][y].isMine && !gameBoard[x][y].isFlagged) {
+                    return false
+                }
+            }
+        }
+        
+        print("You won the game. Congratulations.")
+        return true
     }
     
     func testMyLogic() {
@@ -233,6 +248,7 @@ class Board
                 if (gameBoard[row][col].isFlagged)
                 {
                     print("F ", terminator: "")
+                    continue
                 }
                 
                 if (gameBoard[row][col].isRevealed || printAll)
@@ -256,7 +272,7 @@ class Board
                     }
                 }
             }
-            print("\n")
+            print("")
             
         }
     }
